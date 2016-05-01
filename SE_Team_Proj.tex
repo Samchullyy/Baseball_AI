@@ -1,0 +1,237 @@
+\documentclass[conference,compsoc, twocolumn]{IEEEtran}
+\ifCLASSOPTIONcompsoc
+  \usepackage[nocompress]{cite}
+\else
+  \usepackage{cite}
+\fi
+\ifCLASSINFOpdf
+\else
+\fi
+  \usepackage{amsmath} 
+  \usepackage{array}
+  \usepackage{fixltx2e}
+  \usepackage{stfloats}
+  \usepackage{url}
+  \usepackage{hyperref}
+\hyphenation{data-base}
+
+\begin{document}
+
+\title{Baseball-AI\\ Simultaneous Winning Rate Computing}
+
+\author{\IEEEauthorblockN{Ji Am Chung\IEEEauthorrefmark{1},
+Yeong Jae Byun\IEEEauthorrefmark{2},
+Seung Myeon Park\IEEEauthorrefmark{3}, 
+Jun Jeon\IEEEauthorrefmark{4}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Information System\\
+Hanyang University\\
+Goyang, Gyeonggi Province\\ Email: hummernk@gmail.com}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Department of Information System\\
+Hanyang University\\
+Goyang, Gyeonggi Province\\ Email: qusdudwowo@gmail.com}
+\IEEEauthorblockA{\IEEEauthorrefmark{3}Department of Information System\\
+Hanyang University\\
+Yongin, Gyeonggi Province\\ Email: antimoto@nate.com}
+\IEEEauthorblockA{\IEEEauthorrefmark{4}Department of Information System\\
+Hanyang University\\
+Seoul, Korea\\ Email: jeonjun2@gmail.com}}
+
+\maketitle
+
+\begin{abstract}
+\quad Today baseball is becoming more and more popular and getting new fans. Those who just have put their first step into baseball - find it hard to follow the rules and to understand the changes in the situation. Unlike our baseball league KBO, MLB already has many meaningful methods for in-game analyzing with real time statistics. So we are going to adopt those ideas into KBO league. Winning Probability Added, which is also known as WPA, is one of good factors which allows easy understanding of the situation and the impacts that pitcher or batter makes each time. Our project aims to show ‘Winning Rate’ and ‘WPA factor’ in real-time, with the algorithm that fits KBO situation.
+\end{abstract}
+% no keywords
+
+
+\section{Introduction}
+% no \IEEEPARstart
+\quad Baseball, even though the myriad scandals, attracts more and more fans and is becoming more nationwide sports. There is a major  problem that, though baseball fans are inflowing, it’s hard for beginners to understand the rules and catch situation of the match. Though baseball is much more a number-oriented sport than any others such as soccer or basketball, the classical stats do not fully reflect the match stream and evaluate the value of the players properly. However, in MLB, a lot of sabermetricians have already quantified vague situations and values in numerical way, and KBO tends to follow it. (i.e Babip, OPS, etc..). Korean baseball websites nowadays use the same WPA algorithm which had been used in earlier days of MLB, so the differences between two leagues are not considered. We wanted to solve this problem by creating our own WPA algorithm based on KBO, which not only calculates the stats suitable for KBO, but also analyzes winning possibilities of each team and the impacts each players make. We also focus on helping beginners to understand baseball.
+\quad We will make KBO winning rate DB and we are going to put that into our program. The program  represents ongoing situation of the match and each team’s winning possibilities simultaneously. Also, by showing quantified stats such as batters’ WPA or pitchers’ WAR , it shows how much powerful the player is(or has been) throughout the game, seasons or his entire career. Whether baseball match is underway or not, the program will show player rank categorized by players, teams, or positions according to user’s request.
+\quad It is not just ‘Baseball statistic calculator’, but also somewhat like websites such as Statiz or KBReport. The software indicates different types of statistical analysis, and shows them in visualized ways. We thought that current WPA algorithm used in korean web sites does not fit korean baseball situation. That is why we have started this project.
+
+This project is composed of 4 steps.
+\begin{enumerate}
+\item Crawl the data of  last 10 seasons of KBO from baseball statistics websites. 
+\item Compute the data to make some statistics.
+\item Apply the statistics to WPA algorithm.
+\item Real-time data capturing and showing the winning rate and WPA.
+\end{enumerate}
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+
+\hfill April 2, 2016
+
+
+
+\section{Requirements}
+
+
+
+\subsection{Data Handling}
+
+
+\subsubsection{Crawling}
+\begin{itemize}
+\item Get every single raw data of  KBO from baseball webpage to construct the root database.
+\item Crawiling source : \href{http://www.koreabaseball.com}{http://www.koreabaseball.com}.
+\end{itemize}
+
+\subsubsection{Capturing}
+\begin{itemize}
+\item Get real-time data when the match is underway.
+\end{itemize}
+
+\subsubsection{Real-Time Mirroring}
+\begin{itemize}
+\item Program should immediately renew the database according to the result of the match.
+\end{itemize}
+
+\subsubsection{Computing}
+\begin{itemize}
+\item Calculate the numerical data to make some meaningful statistics.
+\item Every single data has different weight.
+e.g.)\ Hits at 1st inning have different value from those at 9th.
+\item Calculate numerical values including WPA.
+\end{itemize}
+
+\subsubsection{Data Storage}
+\begin{itemize}
+\item Save every single stats data.
+\item Divide players  into two tables. One table is for players who is in active service, the other for retired.
+\item Table for players who is in active service needs to be updated constantly, and the other table doesn’t.
+\item User who wants to conceal  the program from screen can do that by clicking ‘window minimization’ button.
+\end{itemize}
+
+\subsection{Function}
+
+
+\subsubsection{EXCEL Compatibility}
+\begin{itemize}
+\item User can export datas of specific player or stats  to MS Excel files.
+\item User can import fixed form of MS Excel file of specific game result to compute changes of KBO algorithm winning rate shown as image file which can also exported as jpeg, gif, png, or bmp.
+\item User can import fixed form of MS Excel file of specific league(fantasy or amatuer) data to compute WAR stats. This data can be exported as EXCEL file.
+\end{itemize}
+
+\subsubsection{On-Board Posting}
+\begin{itemize}
+\item Someone who wants to post any idea or thoughts can share what they have.
+\item Make another Q\&A board so as to hel beginners solve their curiosity.
+\end{itemize}
+
+\subsubsection{Board Log-in \& Sign-out}
+\begin{itemize}
+\item Log-in to or Sign-out from Board.
+\item User who logged-in the board can upload their post or reply to other users’
+\end{itemize}
+
+\subsubsection{Stats Visualization}
+\begin{itemize}
+\item Show current state of game in a table.
+\item Show current winning average of each team 
+\item Show current WPA stats of players
+\item Show player's photograph
+\end{itemize}
+
+\subsection{User Interface}
+
+
+\subsubsection{Window Minimization \& Window Maximization}
+\begin{itemize}
+\item User who wants to see the program widely can do that by clicking ‘window maximization’ button
+\end{itemize}
+
+\subsubsection{Program Turn On \& Turn Off}
+\begin{itemize}
+\item User can turn on the program by clicking ‘desktop icon’ 
+\item If user try to power on the program even if that is already turned on, terminate existing program and launch the program again
+\item User can turn off the program by clicking ‘x button’ at the top-right corner of the program
+\end{itemize}
+
+\subsubsection{Mouse Click Event}
+\begin{itemize}
+\item Provide user with three options [To Home, Window Minimization, Termination] when user right-click any area within program
+\item If user double-clicks ‘search’ button, program shows last request
+\end{itemize}
+
+\subsubsection{Player Stat Pop-Up}
+\begin{itemize}
+\item When user clicks certain player, program shows his profile by generating a new pop-up
+\item If player is a pitcher, pop up list of the first string who has not on the match yet
+\item If player is taking the field, pop up his profile as batter
+\item Pitcher pop-up profile stats list : ERA(Earned Run Average) for applicable season, WPA, WAR, WHIP for last 5 matches, (K\/BB 9), hyperlink connected to NAVER article about him
+\item Batter pop-up profile stats list : BA(Batting Average), WAR, WPA, OPS for last 5 matches, BABIP for applicable season, \quad hyperlink connected to NAVER article about him
+\item The number of pop-up cannot be over two
+\end{itemize}
+
+\subsubsection{Player Ranking}
+\begin{itemize}
+\item Sort players by team, position, date and game with WPA stats
+\end{itemize}
+
+\subsubsection{Data Searching}
+\begin{itemize}
+\item Searching option constitutes of match schedule, player and stats and player
+\item If option ‘match schedule’ is chosen, program shows match schedule as a calendar
+\item If user click one of date, there are three cases. First one is ‘past match’, so program shows match log. Second one is ‘on-going match’, so program directs user to the match. And the last one is ‘coming match’, so program shows every details of  the match including players, referees, park,  appointed first thrower, weather forecast 
+\item If option ‘player and stat’ is chosen, program shows the applicable stats separately by entire players,  team, position, monthly
+\item If option ‘player’ is chosen, program shows every single stat of applicable player
+\end{itemize}
+
+\subsubsection{Get Information real-time}
+\begin{itemize}
+\item User can choose the way one gets some information(pop-up or push window)
+\item Pop-up is a kind of window, so when user have it on the screen, one cannot click main program
+\item Information could be as follows
+\item Agreed Decision : User can get information about agreed decision and its details
+\item Cancellation in case of rain : User can get information when the match is cancelled in case of rain by getting a pop-up or push window
+\item Player Substitute : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’ player
+\item When option is ‘pop-up’, user can have additional function which is ‘Multi-View’.  By doing so, user can watch several matches simultaneously
+\item If there have multiple pop-ups, eliminate pop-up windows sequentially after checking them
+\end{itemize}
+
+\subsection{Development Environment}
+
+
+\subsubsection{IDE(Integrated Development Environment)}
+\begin{itemize}
+\item Developing Language : Google-Go
+\item Developing Platform : GO 
+\item Use NAVER weather API to get weather information
+\item Use NAVER time API to get time information
+\end{itemize}
+
+\subsection{Execution Environment}
+
+
+\subsubsection{Network Environment}
+\begin{itemize}
+\item Accessing to network needs basically
+\item If network is off-line, user cannot launch program
+\end{itemize}
+
+\subsubsection{Least Background Memory}
+\begin{itemize}
+\item There should be enough available memory space to execute the software.
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
