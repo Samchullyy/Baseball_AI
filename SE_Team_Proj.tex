@@ -12,7 +12,7 @@
   \usepackage{fixltx2e}
   \usepackage{stfloats}
   \usepackage{url}
-  \usepackage{hyperref}
+  \usepackage{graphicx}
 \hyphenation{data-base}
 
 \begin{document}
@@ -60,7 +60,7 @@ This project is composed of 4 steps.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
-\hfill April 2, 2016
+\hfill May 2, 2016
 
 
 
@@ -74,7 +74,7 @@ This project is composed of 4 steps.
 \subsubsection{Crawling}
 \begin{itemize}
 \item Get every single raw data of  KBO from baseball webpage to construct the root database.
-\item Crawiling source : \href{http://www.koreabaseball.com}{http://www.koreabaseball.com}.
+\item Crawiling source : http://www.koreabaseball.com
 \end{itemize}
 
 \subsubsection{Capturing}
@@ -113,13 +113,13 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 \item User can import fixed form of MS Excel file of specific league(fantasy or amatuer) data to compute WAR stats. This data can be exported as EXCEL file.
 \end{itemize}
 
-\subsubsection{On-Board Posting}
+\subsubsection{On-Board Posting(abandoned)}
 \begin{itemize}
 \item Someone who wants to post any idea or thoughts can share what they have.
 \item Make another Q\&A board so as to hel beginners solve their curiosity.
 \end{itemize}
 
-\subsubsection{Board Log-in \& Sign-out}
+\subsubsection{Board Log-in \& Sign-out(abandoned)}
 \begin{itemize}
 \item Log-in to or Sign-out from Board.
 \item User who logged-in the board can upload their post or reply to other users’
@@ -150,8 +150,7 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 
 \subsubsection{Mouse Click Event}
 \begin{itemize}
-\item Provide user with three options [To Home, Window Minimization, Termination] when user right-click any area within program
-\item If user double-clicks ‘search’ button, program shows last request
+\item Provide user with three options [To Home, Window Minimization, Termination] when user right-click any area within program.
 \end{itemize}
 
 \subsubsection{Player Stat Pop-Up}
@@ -190,30 +189,394 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 \item If there have multiple pop-ups, eliminate pop-up windows sequentially after checking them
 \end{itemize}
 
-\subsection{Development Environment}
-
-
-\subsubsection{IDE(Integrated Development Environment)}
+\subsubsection{Error}
 \begin{itemize}
-\item Developing Language : Google-Go
-\item Developing Platform : GO 
-\item Use NAVER weather API to get weather information
-\item Use NAVER time API to get time information
+\item Error alert
 \end{itemize}
 
-\subsection{Execution Environment}
 
 
-\subsubsection{Network Environment}
+\section{Development Environment}
+
+
+
+\subsection{Choice of Software Development Platform}
+
+
+\subsubsection{Which platform and why? (e.g.\ , Windows, Linux, Web, or etc.\ )}
 \begin{itemize}
-\item Accessing to network needs basically
-\item If network is off-line, user cannot launch program
+\item We adopted Windows, because there are some merit when we choose Windows. First of all, the percentage of all Windows user is almost 85\%. Since we want to emphasize on majority, we chose Windows. Second, because of encoding compatibility. For more convenience, it’s much better to share encoding method in OS, web server, database.
 \end{itemize}
 
-\subsubsection{Least Background Memory}
+\subsubsection{Which programming language and why?}
 \begin{itemize}
-\item There should be enough available memory space to execute the software.
+\item There are some technical reasons why we chose programming language ‘Go’ made by google. After a long discussion that lasted several days, group members agreed to implement the program with google Go. Because, different from C or Java, we can easily reflect up-to-date version through cloud. That would help us to keep up with newest trends in software developing, so that we can always maintain the high level stability of the program.
 \end{itemize}
+
+\subsubsection{Provide a cost estimation for your built.\\
+ (including any purchase of software/hardware)}
+\begin{itemize}
+\item human labor - 0 \\
+Our group constitute of four members who all do this group term project voluntarily. So human labor cost is zero.
+\item software cost - 0  \\
+Our group will make program with open source API,  which costs zero for academic purpose.
+\item hardware cost - 0  \\
+Our group uses our existing laptop to simulate or implement our program. There is no need to buy other hardware. 
+\end{itemize}
+
+\subsubsection{Provide clear information of your development environment.\\
+(e.g., version of software, OS version, your computer resources)}
+\begin{itemize}
+\item OS \\
+Windows 10 pro(10586.218 build)
+\item Language Set \\
+Korean
+\item Computer Mode l\\
+MSI GT60
+\item Processor \\
+Intel(R) Core(TM) i7-3600QM	CPU @ 2.4GHz
+\item Main Memory \\
+8GB RAM
+\item Internet Connection \\
+IPTIME WiFi
+\end{itemize}
+
+
+\subsection{Software in use}
+
+
+\subsubsection{Any existing software or algorithm in use? (doing a similar task as
+your proposal; provide a proper reference if there is any)}
+\begin{itemize}
+\item There is no similar software computing WPA, after Tom Tango present concept of WPA.
+\item Rather, there are some websites providing some information which can help users WPA by themselves.
+\end{itemize}
+
+Statiz
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Statiz}     
+\caption{Statiz}
+\end{figure}
+\\
+\\
+\\
+
+KBReport
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{KBReport}    
+\caption{KBReport}
+\end{figure}
+
+TheBook
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{TheBook}
+\caption{TheBook}
+\end{figure}
+
+
+
+
+\subsection{Task distribution (If you want, you can provide this
+later at the next phase - design)}
+
+\begin{itemize}
+\item Which member is responsible for what?
+\end{itemize}
+\begin{center}
+\begin{tabular}{1|1|1} \hline
+Roles				& name 			&task description and etc.\  		\\ \hline
+User     			& 				& 			 			\\ \hline
+Customer      			&  				& 		 				\\ \hline
+Software developer 	      	&  				&  		 				\\ \hline
+Delopment manager      	&  				& 		 				\\ \hline
+\end{tabular}
+\end{center}
+
+
+
+\section{Specification}
+
+
+\subsection{Data Handling}
+
+\subsubsection{Crawling}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{requirement1-a}
+\caption{crawling}
+\end{figure}
+
+\begin{itemize}
+\item Get every single data from baseball webpage to construct the database.
+\item Data means game box score which contains every statement in actual game.
+\item Crawiling source : \\
+	http://www.koreabaseball.com/Schedule/Game/Box\\Score.aspx?leagueId=n\&seriesId=0\&gameId=yyyy\\mmddt1t2x\&gyear=yyyy\\
+	n of leagueId is arbitrary 1 digit number, yyyymmddt1t2x of gameId is year, month, day, team1, team2, 1 digit ordinal number, yyyy of gyear is year
+\item Crawler tries to crawl web data every 30 second.
+\end{itemize}
+
+
+\subsubsection{Capturing}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{requirement1-b}
+\caption{capturing}
+\end{figure}
+
+\begin{itemize}
+\item Get real-time data when match is underway.
+\end{itemize}
+
+
+\subsubsection{Real-Time Mirroring}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{requirement1-c}
+\caption{real-time mirroring}
+\end{figure}
+
+\begin{itemize}
+\item Program should immediately renew the database according to the result of the match.
+\end{itemize}
+
+
+\subsubsection{Computing}
+\begin{itemize}
+\item \begin{equation} \label{eq:winrate} Winrate = \frac{All Matches\cap Statement\cap Win}{All Matches\cap Statement} \end{equation}
+\end{itemize}
+
+
+
+\subsubsection{Data Storage}
+\begin{itemize}
+\item Save every single stats data.
+\item Divide players  into two tables. One table is for players who is in active service, the other for retired.
+\item Table for players who is in active service needs to be updated constantly, and the other table doesn’t.
+\end{itemize}
+
+
+
+\subsection{Functions}
+
+\subsubsection{EXCEL Compatibilty}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{input}
+\caption{excel input file}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{output}
+\caption{excel output file}
+\end{figure}
+
+
+\begin{itemize}
+\item User can export data in the program that she/he wants.
+\item playerorstats.xlsl is an example of excel file daeling with datas of specific player or stats.
+\item gameres.xlsl or gameres.jpeg are examples of fixed form of MS Excel file of specific game result to compute changes of KBO algorithm winning rate shown as image file which can also exported as jpeg, gif, png, or bmp.
+\item leaguedata.xlsl is an example of fixed form of MS Excel file of specific league(fantasy or amatuer) data to compute WAR stats.
+\end{itemize}
+
+\subsubsection{On-Board Posting(X)}
+\begin{itemize}
+\item Someone who wants to post any idea or thoughts can share their idea.
+\item Make another Q&A board so as to help beginners solve their curiosity.
+\end{itemize}
+
+\subsubsection{Board Log-in \& Sign-out(X)}
+\begin{itemize}
+\item Log-in to or Sign-out from Board.
+\item User who logged-in the board can upload their post or reply to other post.
+\end{itemize}
+
+\subsubsection{Stats Visualization}
+\begin{itemize}
+\item cur\_state.myd is an example of mysql data file showing current state of game in a table form.
+\item By Generating a new pop-up, program can show user current winning average of each team.
+\item By Generating a new pop-up, program can show user current WPA stats of players.
+\item By Generating a new pop-up, program can show player's photograph.
+\end{itemize}
+
+
+
+\subsection{User Interface}
+
+
+\subsubsection{Window Minimization & Window Maximization}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{WindowMaxMin}
+\caption{Windows Minim.\&Maxim.}
+\end{figure}
+
+\begin{itemize}
+\item Window default size : 960*540
+\item User who wants to conceal the program from the screen can do that by clicking ‘window minimization’ button.
+\item User who wants to see the program widely can do that by clicking ‘window maximization’ button.
+\item User can turn off the program by clicking ‘x button’ at the top-right corner of  the program.
+\end{itemize}
+
+
+\subsubsection{Program Turn On \& Turn Off}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{icon}
+\caption{Program Turn On}
+\end{figure}
+
+\begin{itemize}
+\item User can turn on the program by clicking ‘desktop icon’.
+\item If user try to power on the program even if that is already turned on, terminate existing program and launch program again.
+\end{itemize}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{WindowTerminate}
+\caption{Program Turn Off}
+\end{figure}
+
+\begin{itemize}
+\item User can turn off the program by clicking ‘x button’ at the top-right corner of  the program.
+\end{itemize}
+
+
+\subsubsection{Mouse Click Event}
+\begin{itemize}
+\item Provide user with three options [To Home, Window Minimization, Termination] when user right-click any area within program.
+\end{itemize}
+
+\subsubsection{Player Stat pop-up}
+\begin{itemize}
+\item When user clicks certain player, program shows his profile by generating a new pop-up.
+\item If player is a pitcher, pop up list of the first string who has not on the match yet.
+\item If player is taking the field, pop up his profile as batter.
+\item Pitcher pop-up profile stats list : ERA(Earned Run Average) for applicable season, WPA, WAR, WHIP for last 5 matches, (K/BB 9), hyperlink connected to NAVER article about him.
+\item Batter pop-up profile stats list : BA(Batting Average), WAR, WPA, OPS for last 5 matches, BABIP for applicable season, hyperlink connected to NAVER article about him.
+\item The number of pop-up cannot be over two.
+\end{itemize}
+
+
+\subsubsection{Current Game}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Current-game.png}
+\caption{Current Game}
+\end{figure}
+
+\begin{itemize}
+\item Star mark indicates that pitcher(player 4) is on the mound and the batter is at bat.
+\item Squares on the field indicate each base. If runner is on the base, then it is colored with red.
+\item Circles at the bottom of the field indicate out count. Red is counted and blank is not.
+\end{itemize}
+
+
+\subsubsection{Player Ranking}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Ranking}
+\caption{Player Ranking}
+\end{figure}
+
+\begin{itemize}
+\item Sort players by team, position with WPA stats.
+\end{itemize}
+
+
+\subsubsection{Data Searching}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Search}
+\caption{Search Option}
+\end{figure}
+\begin{itemize}
+\item Search option constitutes of  ‘Search Match/ Search Player’
+\end{itemize}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Search-match}
+\caption{Search-match option}
+\end{figure}
+\begin{itemize}
+\item If option ‘Search Match’ is chosen, program shows match schedule as a calendar.
+\end{itemize}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Search-match-result}
+\caption{Search match result}
+\end{figure}
+\begin{itemize}
+\item The result is shown above.
+\end{itemize}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Search-player}
+\caption{Search Player}
+\end{figure}
+\begin{itemize}
+\item If option ‘Search Player’ is chosen, input box will appear. It requires user to enter a player’s name.
+\end{itemize}
+
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{Search-player-result}
+\caption{Search Player Result}
+\end{figure}
+\begin{itemize}
+\item The result is shown as above.
+\end{itemize}
+
+
+\subsubsection{Get Information Real-Time}
+\begin{itemize}
+\item User can choose the way one gets some information(pop-up or push window).
+\item Pop-up is a kind of window, so when user have it on the screen, one cannot click main program.
+\item Information could be as follows.
+\item Agreed Decision : User can get information about agreed decision and its details.
+\item Cancellation in case of rain : User can get information when the match is cancelled in case of rain by getting a pop-up or push window.
+\item Player Substitute : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’  player.
+\item When option is ‘pop-up’, user can have additional function which is ‘multi-view’.  By doing so, user can watch several matches simultaneously.
+\item If there has multiple pop-ups, eliminate pop-up windows sequentially after checking them.
+\item Refresh in every 30 seconds.
+\end{itemize}
+
+
+
+\subsubsection{Error}
+\begin{figure}[h]
+\centering\includegraphics[width=6cm]{error1}
+\caption{Error Notification}
+\end{figure}
+
+\begin{itemize}
+\item  If program does not receive signal for 2 minutes, error message pops up with alert sound(windows alert sound).
+\end{itemize}
+
+\subsubsection{Database}
+\begin{itemize}
+\item We need four data tables, and each every table refers to each other.
+\item We also need one Season table.
+\end{itemize}
+
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=6cm]{match_table_1}
+\caption{the first half match table}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=6cm]{match_table_2}
+\caption{the second half match table}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=6cm]{sea_state_1}
+\caption{the first half season statement table}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=6cm]{sea_state_2}
+\caption{the second half season statement table}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=6cm]{player_table}
+\caption{player table}
+\end{figure}
+
+
+\section{Design}
+
+\subsection{Design Detail}
 
 \end{document}
 
