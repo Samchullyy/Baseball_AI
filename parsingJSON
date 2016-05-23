@@ -1,0 +1,38 @@
+-------------------------------parsing json file( player WPA example )
+import json
+
+CONFIG_FILE="./config.json"
+CONFIG={}
+
+
+
+
+def readConfig(filename) :
+    f = open(filename, 'r')
+    js = json.loads(f.read())
+    f.close()
+    return js
+
+
+
+
+def PlayerWPA() :
+    global CONFIG_FILE
+    global CONFIG
+    CONFIG = readConfig(CONFIG_FILE)
+
+
+
+
+    WPA = CONFIG['uuid']['uWPA']  
+
+
+
+    print "palyer's WPA : " + WPA
+
+
+
+
+if __name__ == "__PlayerWPA__":
+    
+	PalyerWPA()
