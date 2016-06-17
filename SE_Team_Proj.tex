@@ -13,11 +13,12 @@
   \usepackage{stfloats}
   \usepackage{url}
   \usepackage{graphicx}
+  \usepackage{here}
 \hyphenation{data-base}
 
 \begin{document}
 
-\title{Baseball-AI\\ Simultaneous Winning Rate Computing}
+\title{Baseball-AI\\ Winning Rate Computing}
 
 \author{\IEEEauthorblockN{Ji Am Chung\IEEEauthorrefmark{1},
 Young Jae Byun\IEEEauthorrefmark{2},
@@ -25,13 +26,13 @@ Seung Myeon Park\IEEEauthorrefmark{3},
 Jun Jeon\IEEEauthorrefmark{4}}
 \IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Information System\\
 Hanyang University\\
-Goyang, Gyeonggi Province\\ Email: hummernk@gmail.com}
+Seoul, Korea\\ Email: hummernk@gmail.com}
 \IEEEauthorblockA{\IEEEauthorrefmark{2}Department of Information System\\
 Hanyang University\\
-Goyang, Gyeonggi Province\\ Email: qusdudwowo@gmail.com}
+Seoul, Korea\\ Email: qusdudwowo@gmail.com}
 \IEEEauthorblockA{\IEEEauthorrefmark{3}Department of Information System\\
 Hanyang University\\
-Yongin, Gyeonggi Province\\ Email: antimoto@nate.com}
+Seoul, Korea\\ Email: antimoto@nate.com}
 \IEEEauthorblockA{\IEEEauthorrefmark{4}Department of Information System\\
 Hanyang University\\
 Seoul, Korea\\ Email: jeonjun2@gmail.com}}
@@ -156,7 +157,7 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 \subsubsection{Player Stat Pop-Up}
 \begin{itemize}
 \item When user clicks certain player, program shows his profile by generating a new pop-up
-\item If player is a pitcher, pop up list of the first string who has not on the match yet
+\item If player is a pitcher, pop up list of the first string who has not been on the match yet
 \item If player is taking the field, pop up his profile as batter
 \item Pitcher pop-up profile stats list : ERA(Earned Run Average) for applicable season, WPA, WAR, WHIP for last 5 matches, (K\/BB 9), hyperlink connected to NAVER article about him
 \item Batter pop-up profile stats list : BA(Batting Average), WAR, WPA, OPS for last 5 matches, BABIP for applicable season, \quad hyperlink connected to NAVER article about him
@@ -173,7 +174,7 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 \item Searching option constitutes of match schedule, player and stats and player
 \item If option ‘match schedule’ is chosen, program shows match schedule as a calendar
 \item If user click one of date, there are three cases. First one is ‘past match’, so program shows match log. Second one is ‘on-going match’, so program directs user to the match. And the last one is ‘coming match’, so program shows every details of  the match including players, referees, park,  appointed first thrower, weather forecast 
-\item If option ‘player and stat’ is chosen, program shows the applicable stats separately by entire players,  team, position, monthly
+\item If option ‘player and stat’ is chosen, program shows the applicable stats by entire players, team, position, monthly separately.
 \item If option ‘player’ is chosen, program shows every single stat of applicable player
 \end{itemize}
 
@@ -184,7 +185,7 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 \item Information could be as follows
 \item Agreed Decision : User can get information about agreed decision and its details
 \item Cancellation in case of rain : User can get information when the match is cancelled in case of rain by getting a pop-up or push window
-\item Player Substitute : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’ player
+\item Player Substitutution : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’ player
 \item When option is ‘pop-up’, user can have additional function which is ‘Multi-View’.  By doing so, user can watch several matches simultaneously
 \item If there have multiple pop-ups, eliminate pop-up windows sequentially after checking them
 \end{itemize}
@@ -210,7 +211,9 @@ e.g.)\ Hits at 1st inning have different value from those at 9th.
 
 \subsubsection{Which programming language and why?}
 \begin{itemize}
-\item There are some technical reasons why we chose programming language ‘Go’ made by google. After a long discussion that lasted several days, group members agreed to implement the program with google Go. Because, different from C or Java, we can easily reflect up-to-date version through cloud. That would help us to keep up with newest trends in software developing, so that we can always maintain the high level stability of the program.
+\item  We used both python and Java. At first we used only python 2.7 to crawl html source, to parse tag data and manipulate date with python DB driver. But pyhon 2.7 had problem of unicode encoding. 
+Because the web site that we wanted to crawl was encoded with 'utf-8', but python doesn't support it.
+So we have to think another IDE. Two candidates was python 3.5, who support 'utf-8' and Java with a friendly programming language. With a contempletation, we decided that crawl, parsing and DB manipulation by using python 3.5 and the others, GUI, etc. by Java. That's because we had not enough time to learn a new Jave crawling, parsing code, but only to have time to transplant python 2.7 code into python 3.5. And we were not sure whether python 3.5 is an effective tool for GUI making, so we adopted Java IDE Netbeans which support easy GUI method.
 \end{itemize}
 
 \subsubsection{Provide a cost estimation for your built.\\
@@ -248,12 +251,13 @@ IPTIME WiFi
 \subsubsection{Any existing software or algorithm in use? (doing a similar task as
 your proposal; provide a proper reference if there is any)}
 \begin{itemize}
-\item There is no similar software computing WPA, after Tom Tango present concept of WPA.
-\item Rather, there are some websites providing some information which can help users WPA by themselves.
+\item There is no similar software computing WPA, after Tom Tango introduced concepted of WPA. But, there is several websites or spreadsheet providing 
+each statement winning rate. For MLB, there is a site called 'The Book'. It is made by Tom Tango who designed many good index including WPA. 'Statiz', 
+'KBReport' are sites providing many baseball stats for KBO.
 \end{itemize}
-
+\\
 Statiz
-\begin{figure}[h]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{Statiz}     
 \caption{Statiz}
 \end{figure}
@@ -262,13 +266,13 @@ Statiz
 \\
 
 KBReport
-\begin{figure}[h]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{KBReport}    
 \caption{KBReport}
 \end{figure}
 
 TheBook
-\begin{figure}[h]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{TheBook}
 \caption{TheBook}
 \end{figure}
@@ -284,14 +288,14 @@ later at the next phase - design)}
 \end{itemize}
 \begin{center}
 \begin{tabular}{1|1|1} \hline
-Roles				& name 			&task description and etc.\  		\\ \hline
-User     			& 				& 			 			\\ \hline
-Customer      			&  				& 		 				\\ \hline
-Software developer 	      	&  				&  		 				\\ \hline
-Delopment manager      	&  				& 		 				\\ \hline
+Roles				& name 					& task description\  	\\ \hline
+User     				& Jun Jeon				& test some modules 	\\ \hline
+Customer      			&  Seung Myun Park		& return feedback		\\ \hline
+Software developer 	&  Y	oung Jae Byun		& develop modules	\\ \hline
+Development manager&  Ji Am Chung			& organize architecture\\ \hline
 \end{tabular}
 \end{center}
-
+\\
 
 
 \section{Specification}
@@ -300,46 +304,49 @@ Delopment manager      	&  				& 		 				\\ \hline
 \subsection{Data Handling}
 
 \subsubsection{Crawling}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{requirement1-a}
-\caption{crawling}
-\end{figure}
 
 \begin{itemize}
 \item Get every single data from baseball webpage to construct the database.
 \item Data means game box score which contains every statement in actual game.
 \item Crawiling source : \\
-	http://www.koreabaseball.com/Schedule/Game/Box\\Score.aspx?leagueId=n\&seriesId=0\&gameId=yyyy\\mmddt1t2x\&gyear=yyyy\\
-	n of leagueId is arbitrary 1 digit number, yyyymmddt1t2x of gameId is year, month, day, team1, team2, 1 digit ordinal number, yyyy of gyear is year
+	http://www.koreabaseball.com/Schedule/Game/Box\\Score.aspx?leagueId=n1\&seriesId=n2\&gameId=yyyy\\mmddt1t2x\&gyear=yyyy\\
+	n1 of leagueID and n2 of seriesID are arbitrary integer number, yyyymmddt1t2x of gameId is year, month, day, team1, team2, 1 digit ordinal number, yyyy of gyear is year
 \item Crawler tries to crawl web data every 30 second.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{requirement1-a}
+\caption{crawling}
+\end{figure}
+
 
 \subsubsection{Capturing}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{requirement1-b}
-\caption{capturing}
-\end{figure}
 
 \begin{itemize}
 \item Get real-time data when match is underway.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{requirement1-b}
+\caption{capturing}
+\end{figure}
 
 \subsubsection{Real-Time Mirroring}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{requirement1-c}
-\caption{real-time mirroring}
-\end{figure}
 
 \begin{itemize}
 \item Program should immediately renew the database according to the result of the match.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{requirement1-c}
+\caption{real-time mirroring}
+\end{figure}
 
 \subsubsection{Computing}
+
 \begin{itemize}
-\item \begin{equation} \label{eq:winrate} Winrate = \frac{All Matches\cap Statement\cap Win}{All Matches\cap Statement} \end{equation}
+\item We can calculate Winning rate as follows. 
+\begin{equation} \label{eq:winrate} Winrate = \frac{All Matches\cap Statement\cap Win}{All Matches\cap Statement} \end{equation}
 \end{itemize}
 
 
@@ -356,21 +363,22 @@ Delopment manager      	&  				& 		 				\\ \hline
 \subsection{Functions}
 
 \subsubsection{EXCEL Compatibilty}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{input}
-\caption{excel input file}
-\end{figure}
-
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{output}
-\caption{excel output file}
-\end{figure}
-
 
 \begin{itemize}
 \item User can export data in the program that she/he wants.
 \item playerorstats.xlsl is an example of excel file daeling with datas of specific player or stats.
-\item gameres.xlsl or gameres.jpeg are examples of fixed form of MS Excel file of specific game result to compute changes of KBO algorithm winning rate shown as image file which can also exported as jpeg, gif, png, or bmp.
+\item gameres.jpeg is an example of image file that can be exported from a fixed form of MS Excel file of specific game result, which computes changes of KBO 
+algorithm winning rate.
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{input}
+\caption{excel input file}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{output}
+\caption{excel output file}
+\end{figure}
 \item leaguedata.xlsl is an example of fixed form of MS Excel file of specific league(fantasy or amatuer) data to compute WAR stats.
 \end{itemize}
 
@@ -400,11 +408,6 @@ Delopment manager      	&  				& 		 				\\ \hline
 
 
 \subsubsection{Window Minimization & Window Maximization}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{WindowMaxMin}
-\caption{Windows Minim.\&Maxim.}
-\end{figure}
-
 \begin{itemize}
 \item Window default size : 960*540
 \item User who wants to conceal the program from the screen can do that by clicking ‘window minimization’ button.
@@ -412,27 +415,33 @@ Delopment manager      	&  				& 		 				\\ \hline
 \item User can turn off the program by clicking ‘x button’ at the top-right corner of  the program.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{WindowMaxMin}
+\caption{Windows Minim.\&Maxim.}
+\end{figure}
 
 \subsubsection{Program Turn On \& Turn Off}
-\begin{figure}[h]
+\begin{itemize}
+\item User can turn on the program by clicking ‘desktop icon’.
+\end{itemize}
+
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{icon}
 \caption{Program Turn On}
 \end{figure}
 
 \begin{itemize}
-\item User can turn on the program by clicking ‘desktop icon’.
 \item If user try to power on the program even if that is already turned on, terminate existing program and launch program again.
 \end{itemize}
-
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{WindowTerminate}
-\caption{Program Turn Off}
-\end{figure}
 
 \begin{itemize}
 \item User can turn off the program by clicking ‘x button’ at the top-right corner of  the program.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{WindowTerminate}
+\caption{Program Turn Off}
+\end{figure}
 
 \subsubsection{Mouse Click Event}
 \begin{itemize}
@@ -442,7 +451,7 @@ Delopment manager      	&  				& 		 				\\ \hline
 \subsubsection{Player Stat pop-up}
 \begin{itemize}
 \item When user clicks certain player, program shows his profile by generating a new pop-up.
-\item If player is a pitcher, pop up list of the first string who has not on the match yet.
+\item If player is a pitcher, pop up list of the first string who has not been on the match yet.
 \item If player is taking the field, pop up his profile as batter.
 \item Pitcher pop-up profile stats list : ERA(Earned Run Average) for applicable season, WPA, WAR, WHIP for last 5 matches, (K/BB 9), hyperlink connected to NAVER article about him.
 \item Batter pop-up profile stats list : BA(Batting Average), WAR, WPA, OPS for last 5 matches, BABIP for applicable season, hyperlink connected to NAVER article about him.
@@ -451,69 +460,67 @@ Delopment manager      	&  				& 		 				\\ \hline
 
 
 \subsubsection{Current Game}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{Current-game.png}
-\caption{Current Game}
-\end{figure}
-
 \begin{itemize}
 \item Star mark indicates that pitcher(player 4) is on the mound and the batter is at bat.
 \item Squares on the field indicate each base. If runner is on the base, then it is colored with red.
 \item Circles at the bottom of the field indicate out count. Red is counted and blank is not.
 \end{itemize}
 
-
-\subsubsection{Player Ranking}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{Ranking}
-\caption{Player Ranking}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Current-game.png}
+\caption{Current Game}
 \end{figure}
 
+\subsubsection{Player Ranking}
 \begin{itemize}
 \item Sort players by team, position with WPA stats.
 \end{itemize}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Ranking}
+\caption{Player Ranking}
+\end{figure}
 
 \subsubsection{Data Searching}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{Search}
-\caption{Search Option}
-\end{figure}
 \begin{itemize}
 \item Search option constitutes of  ‘Search Match/ Search Player’
 \end{itemize}
-
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{Search-match}
-\caption{Search-match option}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Search}
+\caption{Search Option}
 \end{figure}
+
 \begin{itemize}
 \item If option ‘Search Match’ is chosen, program shows match schedule as a calendar.
 \end{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Search-match}
+\caption{Search-match option}
+\end{figure}
 
-\begin{figure}[h]
+\begin{itemize}
+\item The result is shown as follows.
+\end{itemize}
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{Search-match-result}
 \caption{Search match result}
 \end{figure}
-\begin{itemize}
-\item The result is shown above.
-\end{itemize}
 
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{Search-player}
-\caption{Search Player}
-\end{figure}
 \begin{itemize}
 \item If option ‘Search Player’ is chosen, input box will appear. It requires user to enter a player’s name.
 \end{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Search-player}
+\caption{Search Player}
+\end{figure}
 
-\begin{figure}[h]
+\begin{itemize}
+\item The result is shown as follows.
+\end{itemize}
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{Search-player-result}
 \caption{Search Player Result}
 \end{figure}
-\begin{itemize}
-\item The result is shown as above.
-\end{itemize}
 
 
 \subsubsection{Get Information Real-Time}
@@ -523,7 +530,7 @@ Delopment manager      	&  				& 		 				\\ \hline
 \item Information could be as follows.
 \item Agreed Decision : User can get information about agreed decision and its details.
 \item Cancellation in case of rain : User can get information when the match is cancelled in case of rain by getting a pop-up or push window.
-\item Player Substitute : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’  player.
+\item Player Substitutition : In case of substituting player, User can get information why the player was substituted with other, and information about that ‘other’  player.
 \item When option is ‘pop-up’, user can have additional function which is ‘multi-view’.  By doing so, user can watch several matches simultaneously.
 \item If there has multiple pop-ups, eliminate pop-up windows sequentially after checking them.
 \item Refresh in every 30 seconds.
@@ -532,14 +539,13 @@ Delopment manager      	&  				& 		 				\\ \hline
 
 
 \subsubsection{Error}
-\begin{figure}[h]
-\centering\includegraphics[width=6cm]{error1}
-\caption{Error Notification}
-\end{figure}
-
 \begin{itemize}
 \item  If program does not receive signal for 2 minutes, error message pops up with alert sound(windows alert sound).
 \end{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{error1}
+\caption{Error Notification}
+\end{figure}
 
 \subsubsection{Database}
 \begin{itemize}
@@ -548,35 +554,321 @@ Delopment manager      	&  				& 		 				\\ \hline
 \end{itemize}
 
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{match_table_1}
 \caption{the first half match table}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{match_table_2}
 \caption{the second half match table}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{sea_state_1}
 \caption{the first half season statement table}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{sea_state_2}
 \caption{the second half season statement table}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering\includegraphics[width=6cm]{player_table}
 \caption{player table}
 \end{figure}
 
 
-\section{Design}
 
-\subsection{Design Detail}
+
+\section{Architecture Design \& Implementation(partial)}
+
+\subsection{Overall architecture}
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{ModuleRelation}
+\caption{ModuleRelation}
+\end{figure}
+
+\begin{itemize}
+\item Crawler \\
+crawl the historical match result\\
+Class1 : pastSpider\\
+
+\item Parser \\
+After checking parsed data, decide whether adopt it or not. \\ 
+Class1 : game\_checker \\
+Class2 : html\_parse \\ 
+
+\item Computing \\
+By using match DB, compute Winrate, player WPA.\\
+Class1 : make\_winrate\\
+Class2 : make\_player\_wpa\\
+Class3 : current\_game\\
+
+\item DB controller\\
+Some codes dealing with DB\\
+class not decided yet.\\
+
+\item GUI
+Search player, position, etc. using DB.\\
+Class1 : gui\\
+Class2 : tabbed\\
+Class3 : search\_p\\
+Class4 : resultplayerpanel\\
+Class5 : search\_m\\
+Class6 : dbgen\\
+\end{itemize}
+
+
+\subsection{Directory organization}
+
+\begin{center}
+\begin{tabular}{1|1|1|1} \hline
+Directory	& File names 				& Module names in use  & Etc.	\\ \hline
+./db/     		& match\_log				& computing 		   &		\\ \hline
+./db/      		&  player\_wpa			& GUI				   &		\\ \hline
+./db/ 		&  winrate				& GUI				   &		\\ \hline
+./db/     	  	&  current\_match			& GUI				   &		\\ \hline
+./      		&  baseball\_AI			& main module		   &		\\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{module 1}
+Crawling : \\
+Crawl raw box data to make past match log. \\
+class1 pastSpider : crawl every single KBO website till when DB is made initially. \\
+And make match\_log in db updateSpider : crawl KBO website only for needs to be updated.\\
+(if last db was ver. 20160528, and today is 20160531, update for 29,30 for automatically)
+
+\subsection{module 2} 
+Parsing : \\
+Parse the crawled data to make some useful information. \\
+class1 game\_checker : parse crawled data to check it is valid website or not. \\ 
+class2 html\_parse : after game\_checker adopt specific website, leaving only meaningful values to make DB "match\_log" \\
+
+\subsection{module 3}
+Computing : \\  
+Compute winrate and WPA from match log, by changing box data to statement data. \\ 
+class1 make\_winrate : read box data in "match\_log" and get statement data and save into "winrate" \\  
+class2 make\_player\_wpa : read "match\_log" and compute the plus and minus value of winrate and save wpa values into "player\_wpa"\\
+class3 current\_game  : using box data crawled by current\_spider make statement data to save into "current\_game"
+ 
+
+\subsection{module 4}
+DB manipulator : \\ 
+not decided yet clearly. \\
+
+\subsection{module 5}
+GUI : \\
+class1 gui : Root frame that all of the contents are integrated.in\\
+class2 Tabbed : basic format of panel which is used to declare each tab.in frame.\\
+class3 search\_p : action which occurs when ‘Search Player’ button is clicked.\\
+class4 resultplayerpanel : panel which pops up to show the result of 'Search Player'\\
+class5 search\_m : action which occurs when ‘Search Match’ button is clicked.\\
+class6 dbgen : generate or update database when such button is clicked.\\
+
+
+
+
+
+\section{Use Cases}
+
+
+\subsection{Current Match}
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CurrentMatch-fc}
+\caption{Current Match-flow chart}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{1-CurrentMatch}
+\caption{Current Match tab}
+\end{figure}
+
+\begin{itemize}
+\item Show each team’s team name and players -pitchers and batters- at each side of the tab. Leftside is for home team and rightside is for away team. It also shows players’ individual WPAs. 
+\item On the center of the tab, brief state of the match is displayed. If runner is on the base, the base is colored with red.
+\item Still developing : Showing each team’s score and win rate. Choose match among matches underway.
+\end{itemize}
+
+
+\subsection{Player Search}
+
+\begin{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{PlayerSearch-fc}
+\caption{Player Search-flow chart}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{2-Search}
+\caption{Search tab}
+\end{figure}
+\item User can choose between ‘Search Player’ and ‘Search Match’.
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{3-Search-player}
+\caption{Player Search}
+\end{figure}
+\item User can enter player’s name.
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{4-Search-player-result}
+\caption{Player Search result}
+\end{figure}
+\item Show the WPA and player’s name which user entered.
+
+\end{itemize}
+
+
+\subsection{Match Search}
+
+\begin{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearch-fc}
+\caption{Match Search-flow chart}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{5-Search-match}
+\caption{match search}
+\end{figure}
+\item User can choose the date.
+\item Still developing: \\
+ Choose match among matches of the selected Date.\\
+ If user chooses match, show winrate of each team by innings in line graph.\\
+ Show highest WPA player of chosen match.
+
+\end{itemize}
+
+
+\subsection{DB generation}
+
+\begin{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{DBgeneration-fc}
+\caption{DB generation-flow chart}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{6-DBGenerate}
+\caption{DB Generation/update}
+\end{figure}
+\item User clicks ‘Generate/Update DB’ button, \\
+case 1 : If there is no DB named 'match\_log', create a new json format DB. \\
+case 2 : else there exists the file already, update it to latest date.
+\end{itemize}
+
+
+\section{Software Installation Guide}
+
+\subsection{MongoDB}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo1}
+\caption{MongoDB Logo}
+\end{figure}
+In order to execute the baseball.ai file, we first need MongoDB. Many exe file don’t need any language program or other platforms because they all aimed to just ‘execute’. However, this baseball.ai file has to be installed to get to the database created by file. MongoDB is a free and open-source cross-platform document-oriented database. It’s classified as a NoSQL database, and it avoids the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas. With the use of MongoDB, much of the functionality can be accessed through JAVA and python. MongoDB can be used as a file system, taking advantage of load balancing and data replication features over multiple machines for storing files. Files can be distributed and copied multiple times between machines transparently, thus effectively creating a load-balanced and fault-tolerant system. \\
+Installation MongoDB on windows.\\
+
+\subsubsection{Step1}\\
+Visit downloads page and find your version of Windows. We are going to place all these files directly inside a directory C:/mongodo/. So once the download finishes, extract the zip and open the folders until you find /bin/ with a few other files. Select all these and cut/paste into our new C:/mongodb/directory.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo2}
+\caption{www.mongodb.org/}
+\end{figure}
+http://www.mongodb.org/ \\
+http://www.mongodb.org/downloads\\
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo3}
+\caption{version/os check}
+\end{figure}
+Check your version and OS then downloads.\\ \\
+
+
+\subsubsection{Step2}\\
+Add route. Add new route named MONGODB\_HOME and put the address on which you uncompressed.\\
+Revise Path as showed below.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo4}
+\caption{system variable editting}
+\end{figure}
+
+\subsubsection{Step3}\\
+Now, inside this folder alongside /bin create a new folder named "log" which will store all the MongoDB system logs. We also need to create two external directories for data storage, C:/data/ and C:/data/db.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo5}
+\caption{data storage directory}
+\end{figure}
+
+\subsubsection{Step4}\\
+After creating new directory, and put ‘mongod’ on the DOS command. Then we can see the server is on like below. 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo6}
+\caption{db creation using CMD}
+\end{figure}
+Then, let’s put new command and put word ‘mongo’’. If you are succeed to follow up to here, you can see the databased to ‘test’ , which means that it’s successfully installed.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo7}
+\caption{connect on database 'test'}
+\end{figure}
+
+\subsubsection{Step5}\\
+If we open up the command prompt and run cd C:/mongodb/bin, we are looking to start the mongod.exe in shell, but after running this you’ll notice the operation will freeze when listening for connections. Well it’s not actually frozen, we are running Mongo directly through the terminal.\\
+So, to start comman Mongo automatically as a Windows Service, first create a log file and configuration for the service. The code below executes creating the log file.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo8}
+\caption{creating log file}
+\end{figure}
+Now run the next two lines in terminal to create the service and get it started.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo9}
+\caption{creating service and starts}
+\end{figure}
+Following line shows all current databases on the server:
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{mongo10}
+\caption{show database}
+\end{figure}
+
+
+\subsection{BaseballAI.exe}
+\subsubsection{Search Player}\\
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{proguidesplayer}
+\caption{Search Player}
+\end{figure}
+You can enter the name of player you want. By doing so, you can get his WPA.
+
+\subsubsection{Search Match}\\
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{proguidesmatch}
+\caption{Search Match}
+\end{figure}
+You can select the date of match, then you can get all the list of the matches on that date.
+
+\subsubsection{Winrate Graph}\\
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{proguidesgraph}
+\caption{Winrate Graph}
+\end{figure}
+The win-rate for all innings of each teams’ are showed in linear graph.
+
+
+\section{Discussion}
+We decided to use python because python is a handy programming language to deal with. Our   
+real purpose was to crawl data about korea baseball league, which includes the name(korean). Because python 2.7 doesn't support unicode, at first we didn't know how to handle korean encoding.
+But at last, we transfer to python 3.5 and java who is free from unicode problem. During that transition, we had to amend what we had done partly or entirely, and it took a non trivial time to accomplish that. That was our first challenge. Second, about parsing. Because our program uses crawled data from HTML source, it is impossible to avoid parsing problem. The basic principle of parsing is quite simple. But like a many cases, the applicated, nested ones made us feel terrible. Sometimes, it tooks 3 to 4 days to parse one web site. Because both python and parsing is something we had never used before, that may be the reason why we had such a difficulties.
+And, about non-technical difficulties. this might be related to technical problem.. Because we all members are technically not proficient, so there was some obstacle when we take about out project, or program. For example, our members was distributed their task one by one. But because computer software is inter-related, there is some time one should know other software's basic things. But in terms of that, we were insufficient. And that makes inter-communication more difficult, slows down the talking. 
+Through entire curriculum of our department, this class, firstly and mostly, provide students with practical application of what we learn by doing a project. So except for experienced students who did many project before this class, other class including us must be embrassed. But the more milestone of project we finish, the more we could get relief and we were suprised with ourselves that we could do such a things. Especially we really appreciate you and this class that We improved our practical skill by doing this project.
 
 \end{document}
 
