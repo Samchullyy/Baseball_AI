@@ -300,25 +300,31 @@ Development manager&  Ji Am Chung			& organize architecture\\ \hline
 
 \section{Specification}
 
-
 \subsection{Data Handling}
 
 \subsubsection{Crawling}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingSource}
+\caption{Crawling source}
+\end{figure}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{ParsingSource}
+\caption{Parsing source}
+\end{figure}
 
 \begin{itemize}
-\item Get every single data from baseball webpage to construct the database.
+\item Users can set the start date and end day that includes matches they want to crawl.
+\item The crawler gets data from baseball webpage to construct the database.
 \item Data means game box score which contains every statement in actual game.
-\item Crawiling source : \\
-	http://www.koreabaseball.com/Schedule/Game/Box\\Score.aspx?leagueId=n1\&seriesId=n2\&gameId=yyyy\\mmddt1t2x\&gyear=yyyy\\
-	n1 of leagueID and n2 of seriesID are arbitrary integer number, yyyymmddt1t2x of gameId is year, month, day, team1, team2, 1 digit ordinal number, yyyy of gyear is year
-\item Crawler tries to crawl web data every 30 second.
+\item It cralws form the homepage: \\
+http://www.koreabaseball.com/Schedule/Game/BoxScore.aspxleagueId=n1&seriesId=n2&gameId=yyyymmddtlt2x&gyear=yyyy\\
+n1 of leagueId and n2 of SeriesID are arbitrary integer number, yyyymmddt1t2x of gameId is year, month, day, team1, team2, I digit ordinal number, yyyy of gyear is year.
 \end{itemize}
 
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{requirement1-a}
 \caption{crawling}
 \end{figure}
-
 
 \subsubsection{Capturing}
 
@@ -336,6 +342,50 @@ Development manager&  Ji Am Chung			& organize architecture\\ \hline
 \begin{itemize}
 \item Program should immediately renew the database according to the result of the match.
 \end{itemize}
+
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingRealtimeCode}
+\caption{Crawling Real-time Code}
+\end{figure}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{ParsingRealtimeCode}
+\caption{Parsing Real-time Code}
+\end{figure}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingRealtimeSource}
+\caption{Crawling Real-time Source}
+\end{figure}
+\begin{itemize}
+\item After the data is crawled, crawler checks who is winning at the specific time, ans parse the data line-by line and puts the value into the program.
+\end{itemize}
+\begin{itemize}
+\item After the data is put on the program, it shows current situation of the match real-time.
+\end{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{RealtimeGUI}
+\caption{Real-time GUI}
+\end{figure}
+\begin{itemize}
+\item If the base is on with a batter, it filled with color ‘red’ and if the base is not on, it filled with color ‘white’
+\end{itemize}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingWhoWonCode1}
+\caption{Crawling who won code1}
+\end{figure}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingWhoWonCode2}
+\caption{Crawling who won code2}
+\end{figure}
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{CrawlingWhoWonSource}
+\caption{Crawling who won that game source}
+\end{figure}
+\begin{itemize}
+\item When the match ends, real-time crawler gets the information of which team won the game, and ends with setting the value 1 to won team and 0 to lost team.
+\end{itemize}
+
+
+
 
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{requirement1-c}
@@ -586,6 +636,10 @@ algorithm winning rate.
 
 \subsection{Overall architecture}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{Architecture}
+\caption{Easy Architecture}
+\end{figure}
 
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{ModuleRelation}
@@ -610,7 +664,7 @@ Class3 : current\_game\\
 
 \item DB controller\\
 Some codes dealing with DB\\
-class not decided yet.\\
+Embedded in crawling code. no separate class made.\\
 
 \item GUI
 Search player, position, etc. using DB.\\
@@ -676,23 +730,19 @@ class6 dbgen : generate or update database when such button is clicked.\\
 
 \section{Use Cases}
 
-
 \subsection{Current Match}
 
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{CurrentMatch-fc}
-\caption{Current Match-flow chart}
-\end{figure}
-
-\begin{figure}[H]
-\centering\includegraphics[width=6cm]{1-CurrentMatch}
-\caption{Current Match tab}
+\centering\includegraphics[width=6cm]{WinrateCalculator}
+\caption{Winrate calculator based on statement}
 \end{figure}
 
 \begin{itemize}
-\item Show each team’s team name and players -pitchers and batters- at each side of the tab. Leftside is for home team and rightside is for away team. It also shows players’ individual WPAs. 
-\item On the center of the tab, brief state of the match is displayed. If runner is on the base, the base is colored with red.
-\item Still developing : Showing each team’s score and win rate. Choose match among matches underway.
+\item You can choose the current situation of the match. Ex) score, inning, outcount, base
+\end{itemize}
+\begin{itemize}
+\item If you finish putting the value and push on the calculate tab, the home winrate and away winrate is calculated and showed on the program.
+\item It is based on the latest database you updated or the existing one.
 \end{itemize}
 
 
@@ -703,29 +753,23 @@ class6 dbgen : generate or update database when such button is clicked.\\
 \centering\includegraphics[width=6cm]{PlayerSearch-fc}
 \caption{Player Search-flow chart}
 \end{figure}
-
-
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{2-Search}
-\caption{Search tab}
+\centering\includegraphics[width=6cm]{SearchButton}
+\caption{Search button}
 \end{figure}
-\item User can choose between ‘Search Player’ and ‘Search Match’.
-
-
+\item If Users choose the search tap, User can choose between Search Player and Search Match.
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{3-Search-player}
-\caption{Player Search}
+\centering\includegraphics[width=6cm]{PlayerSearch}
+\caption{Player search pop-up}
 \end{figure}
-\item User can enter player’s name.
-
-
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{4-Search-player-result}
-\caption{Player Search result}
+\centering\includegraphics[width=6cm]{PlayerSearchResult}
+\caption{Player search result}
 \end{figure}
-\item Show the WPA and player’s name which user entered.
-
-\end{itemize}
+\item If the user clicks on search player tab, another tab is on which users can put the name of the player.
+\item If there is many names of the player that have the same name, the all players are shown on the table.
+\item The existing information is name, birthdate, WPA, WAR of the player.
+\end {itemize}
 
 
 \subsection{Match Search}
@@ -736,17 +780,40 @@ class6 dbgen : generate or update database when such button is clicked.\\
 \caption{Match Search-flow chart}
 \end{figure}
 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearchDate}
+\caption{Match Search\_date choose}
+\end{figure}
+\item if users click on the ‘search match’ tap, there shows calendar on which you can put the date.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearchMatch}
+\caption{Match Search\_match choose}
+\end{figure} 
+\item After users pick the date, you can get all the list of the matches on that date.
 
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{5-Search-match}
-\caption{match search}
+\centering\includegraphics[width=6cm]{MatchSearchGraph}
+\caption{Match Search\_Winrate Graph}
 \end{figure}
-\item User can choose the date.
-\item Still developing: \\
- Choose match among matches of the selected Date.\\
- If user chooses match, show winrate of each team by innings in line graph.\\
- Show highest WPA player of chosen match.
-
+\item The winrate for all innings of each team are shows by linear graph.
+\item The values of two graphs are added up to 100\% for every innings. 
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearchGraphZoom}
+\caption{Graph option\_zoom in, zoom out}
+\end{figure}
+\item Users can view the graph in bigger form by clicking on zoom in button, and in smaller form by clicking on zoom out button.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearchGraphPrint}
+\caption{Graph option\_print graph}
+\end{figure}
+\item Users can print the output by clicking on print tab.
+\item If users click on it, users can set more details such as size of the sheet, the direction of the print, the margins on the sides,top and bottom.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{MatchSearchGraphSave}
+\caption{Graph option\_save graph}
+\end{figure}
+\item If users click on the save as tab, users can save the graph output by the file form they want.
+\item This program supports file form PDF, SVG, and PNG.
 \end{itemize}
 
 
@@ -758,16 +825,23 @@ class6 dbgen : generate or update database when such button is clicked.\\
 \caption{DB generation-flow chart}
 \end{figure}
 
-
+\item This program uses MongoDB as data flatforms. By using MongoDB, much of the program functionality can be accessed thorugh JAVA and python.
 \begin{figure}[H]
-\centering\includegraphics[width=6cm]{6-DBGenerate}
-\caption{DB Generation/update}
+\centering\includegraphics[width=6cm]{DBGeneration}
+\caption{DB generating program}
 \end{figure}
-\item User clicks ‘Generate/Update DB’ button, \\
-case 1 : If there is no DB named 'match\_log', create a new json format DB. \\
-case 2 : else there exists the file already, update it to latest date.
-\end{itemize}
-
+\item If users click out the GUI.exe, users can generate/update DB
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{BeforeDBGeneration}
+\caption{Before\_client DB generation}
+\end{figure}
+\item Users need to load cmd to generate another DB.
+\item Users initially generate/update db my putting the line \'mongo\', \'use player\' and \'db.player.find()\' sequentially.
+\begin{figure}[H]
+\centering\includegraphics[width=6cm]{AfterDBGeneration}
+\caption{After\_client DB generation}
+\end{figure}
+\item The whole DB is generated or updated with the clicking on the \'DB\' button in \'GUI\' program afer you put the line on the cmd.
 
 \section{Software Installation Guide}
 
@@ -779,7 +853,7 @@ case 2 : else there exists the file already, update it to latest date.
 In order to execute the baseball.ai file, we first need MongoDB. Many exe file don’t need any language program or other platforms because they all aimed to just ‘execute’. However, this baseball.ai file has to be installed to get to the database created by file. MongoDB is a free and open-source cross-platform document-oriented database. It’s classified as a NoSQL database, and it avoids the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas. With the use of MongoDB, much of the functionality can be accessed through JAVA and python. MongoDB can be used as a file system, taking advantage of load balancing and data replication features over multiple machines for storing files. Files can be distributed and copied multiple times between machines transparently, thus effectively creating a load-balanced and fault-tolerant system. \\
 Installation MongoDB on windows.\\
 
-\subsubsection{Step1}\\
+\subsubsection{Step1}
 Visit downloads page and find your version of Windows. We are going to place all these files directly inside a directory C:/mongodo/. So once the download finishes, extract the zip and open the folders until you find /bin/ with a few other files. Select all these and cut/paste into our new C:/mongodb/directory.
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{mongo2}
@@ -794,7 +868,7 @@ http://www.mongodb.org/downloads\\
 Check your version and OS then downloads.\\ \\
 
 
-\subsubsection{Step2}\\
+\subsubsection{Step2}
 Add route. Add new route named MONGODB\_HOME and put the address on which you uncompressed.\\
 Revise Path as showed below.
 \begin{figure}[H]
@@ -802,14 +876,14 @@ Revise Path as showed below.
 \caption{system variable editting}
 \end{figure}
 
-\subsubsection{Step3}\\
+\subsubsection{Step3}
 Now, inside this folder alongside /bin create a new folder named "log" which will store all the MongoDB system logs. We also need to create two external directories for data storage, C:/data/ and C:/data/db.
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{mongo5}
 \caption{data storage directory}
 \end{figure}
 
-\subsubsection{Step4}\\
+\subsubsection{Step4}
 After creating new directory, and put ‘mongod’ on the DOS command. Then we can see the server is on like below. 
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{mongo6}
@@ -821,7 +895,7 @@ Then, let’s put new command and put word ‘mongo’’. If you are succeed to
 \caption{connect on database 'test'}
 \end{figure}
 
-\subsubsection{Step5}\\
+\subsubsection{Step5}
 If we open up the command prompt and run cd C:/mongodb/bin, we are looking to start the mongod.exe in shell, but after running this you’ll notice the operation will freeze when listening for connections. Well it’s not actually frozen, we are running Mongo directly through the terminal.\\
 So, to start comman Mongo automatically as a Windows Service, first create a log file and configuration for the service. The code below executes creating the log file.
 \begin{figure}[H]
@@ -841,21 +915,21 @@ Following line shows all current databases on the server:
 
 
 \subsection{BaseballAI.exe}
-\subsubsection{Search Player}\\
+\subsubsection{Search Player}
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{proguidesplayer}
 \caption{Search Player}
 \end{figure}
 You can enter the name of player you want. By doing so, you can get his WPA.
 
-\subsubsection{Search Match}\\
+\subsubsection{Search Match}
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{proguidesmatch}
 \caption{Search Match}
 \end{figure}
 You can select the date of match, then you can get all the list of the matches on that date.
 
-\subsubsection{Winrate Graph}\\
+\subsubsection{Winrate Graph}
 \begin{figure}[H]
 \centering\includegraphics[width=6cm]{proguidesgraph}
 \caption{Winrate Graph}
